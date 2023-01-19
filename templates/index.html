@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Расписание</title>
+    <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h2>Найти день по предмету</h2>
+    <form action="/subject/" method="post">
+        <p>Ввести предмет</p>
+        <input type="text" name="name_of_subject">
+        <input type="submit" value="Найти" class="button">
+    </form>
+    <header class="header">
+        <div class="header-part">
+            <div>
+                <h1 align="center">Расписание на сегодня:</h1>
+                {% for sub in today %}
+                <p align="center">
+                    <br>{{ sub["discipline"] }}, {{ sub["type"] }}
+                    <br>{{ sub["day_week"] }}, {{ sub["time"] }}
+                    <br>{{ sub["teacher"] }}, {{ sub["position"] }}
+                    <br>{{ sub["department"] }}, {{ sub["building"] }}, {{ sub["classroom"] }}
+                </p>
+                {% endfor %}
+            </div>
+            <div>
+            <h1 align="center">Расписание на завтра:</h1>
+            {% for sub in tomorrow %}
+            <p align="center">
+                <br>{{ sub["discipline"] }}, {{ sub["type"] }}
+                <br>{{ sub["day_week"] }}, {{ sub["time"] }}
+                <br>{{ sub["teacher"] }}, {{ sub["position"] }}
+                <br>{{ sub["department"] }}, {{ sub["building"] }}, {{ sub["classroom"] }}
+            </p>
+            {% endfor %}
+            </div>
+        </div>
+    </header>
+</body>
+</html>
